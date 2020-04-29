@@ -1,0 +1,261 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Movies",
+    "description" : "Simple theater app",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost"
+  } ],
+  "paths" : {
+    "/app/films/delete.php" : {
+      "post" : {
+        "description" : "Delete movie",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"id\" : 60\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Deleted with success",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    },
+    "/app/films/create.php" : {
+      "post" : {
+        "description" : "Create movie",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"id\" : 60,\r\n    \"title\" : \"Scary Movie II\",\r\n\t\"genre_id\" : 25\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created with success",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    },
+    "/app/films/update.php" : {
+      "post" : {
+        "description" : "Update movie",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_2"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"id\" : 60,\r\n    \"title\" : \"Scary Movie II\",\r\n\t\"genre_id\" : 10\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Updated with success",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    },
+    "/app/films/search.php" : {
+      "post" : {
+        "description" : "Search movie by title/genre",
+        "parameters" : [ {
+          "name" : "sp",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "horror"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found at least one movie",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    },
+    "/app/films/readAll.php" : {
+      "post" : {
+        "description" : "Search all movies",
+        "responses" : {
+          "200" : {
+            "description" : "Found all movies with success",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    },
+    "/app/films/searchByWeek.php" : {
+      "post" : {
+        "description" : "Search movies by week number",
+        "parameters" : [ {
+          "name" : "w",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "12"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found at least one movie",
+            "content" : {
+              "application/json; charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost"
+      } ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "genre_id" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "body_2" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "genre_id" : {
+            "type" : "integer"
+          }
+        }
+      }
+    }
+  }
+}
